@@ -7,7 +7,7 @@ import 'package:blue_print_pos/models/models.dart';
 import 'package:blue_print_pos/receipt/receipt_section_text.dart';
 import 'package:blue_print_pos/scanner/blue_scanner.dart';
 import 'package:blue_thermal_printer/blue_thermal_printer.dart' as blue_thermal;
-import 'package:esc_pos_utils_plus/esc_pos_utils.dart';
+import 'package:esc_pos_utils/esc_pos_utils.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart' as flutter_blue;
 import 'package:flutter_blue_plus/gen/flutterblueplus.pb.dart' as proto;
@@ -59,8 +59,7 @@ class BluePrintPos {
     try {
       if (Platform.isAndroid) {
         final blue_thermal.BluetoothDevice bluetoothDeviceAndroid =
-            blue_thermal.BluetoothDevice(
-                selectedDevice?.name ?? '', selectedDevice?.address ?? '');
+            blue_thermal.BluetoothDevice(selectedDevice?.name ?? '', selectedDevice?.address ?? '');
         await _bluetoothAndroid?.connect(bluetoothDeviceAndroid);
       } else if (Platform.isIOS) {
         _bluetoothDeviceIOS = flutter_blue.BluetoothDevice.fromProto(
@@ -70,11 +69,8 @@ class BluePrintPos {
             type: proto.BluetoothDevice_Type.valueOf(selectedDevice?.type ?? 0),
           ),
         );
-        final List<flutter_blue.BluetoothDevice> connectedDevices =
-            await _bluetoothIOS?.connectedDevices ??
-                <flutter_blue.BluetoothDevice>[];
-        final int deviceConnectedIndex = connectedDevices
-            .indexWhere((flutter_blue.BluetoothDevice bluetoothDevice) {
+        final List<flutter_blue.BluetoothDevice> connectedDevices = await _bluetoothIOS?.connectedDevices ?? <flutter_blue.BluetoothDevice>[];
+        final int deviceConnectedIndex = connectedDevices.indexWhere((flutter_blue.BluetoothDevice bluetoothDevice) {
           return bluetoothDevice.id == _bluetoothDeviceIOS?.id;
         });
         if (deviceConnectedIndex < 0) {
@@ -194,16 +190,12 @@ class BluePrintPos {
         _bluetoothAndroid?.writeBytes(Uint8List.fromList(byteBuffer));
       } else if (Platform.isIOS) {
         final List<flutter_blue.BluetoothService> bluetoothServices =
-            await _bluetoothDeviceIOS?.discoverServices() ??
-                <flutter_blue.BluetoothService>[];
-        final flutter_blue.BluetoothService bluetoothService =
-            bluetoothServices.firstWhere(
+            await _bluetoothDeviceIOS?.discoverServices() ?? <flutter_blue.BluetoothService>[];
+        final flutter_blue.BluetoothService bluetoothService = bluetoothServices.firstWhere(
           (flutter_blue.BluetoothService service) => service.isPrimary,
         );
-        final flutter_blue.BluetoothCharacteristic characteristic =
-            bluetoothService.characteristics.firstWhere(
-          (flutter_blue.BluetoothCharacteristic bluetoothCharacteristic) =>
-              bluetoothCharacteristic.properties.write,
+        final flutter_blue.BluetoothCharacteristic characteristic = bluetoothService.characteristics.firstWhere(
+          (flutter_blue.BluetoothCharacteristic bluetoothCharacteristic) => bluetoothCharacteristic.properties.write,
         );
         await characteristic.write(byteBuffer, withoutResponse: true);
       }
@@ -257,8 +249,7 @@ class BluePrintPos {
         color: const Color(0xFF000000),
         emptyColor: const Color(0xFFFFFFFF),
       ).toImage(size);
-      final ByteData? byteData =
-          await image.toByteData(format: ImageByteFormat.png);
+      final ByteData? byteData = await image.toByteData(format: ImageByteFormat.png);
       assert(byteData != null);
       return byteData!.buffer.asUint8List();
     } on Exception catch (exception) {
@@ -277,8 +268,7 @@ class BluePrintPos {
     };
     Uint8List results = Uint8List.fromList(<int>[]);
     try {
-      results = await _channel.invokeMethod('contentToImage', arguments) ??
-          Uint8List.fromList(<int>[]);
+      results = await _channel.invokeMethod('contentToImage', arguments) ?? Uint8List.fromList(<int>[]);
     } on Exception catch (e) {
       log('[method:contentToImage]: $e');
       throw Exception('Error: $e');

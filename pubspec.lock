@@ -21,7 +21,7 @@ packages:
       name: blue_thermal_printer
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.0"
+    version: "1.2.3"
   boolean_selector:
     dependency: transitive
     description:
@@ -56,7 +56,7 @@ packages:
       name: convert
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.0"
+    version: "3.1.1"
   crypto:
     dependency: transitive
     description:
@@ -71,13 +71,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.17.0"
-  esc_pos_utils_plus:
+  esc_pos_utils:
     dependency: "direct main"
     description:
-      name: esc_pos_utils_plus
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.1+6"
+      path: "."
+      ref: "0.0.1"
+      resolved-ref: "7b5165b4a02020539e56ef3cf859122381277134"
+      url: "https://github.com/Denis3107/esc_pos_utils"
+    source: git
+    version: "1.1.0"
   fake_async:
     dependency: transitive
     description:
@@ -103,12 +105,19 @@ packages:
       name: flutter_blue_plus
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.2"
+    version: "1.4.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
     source: sdk
     version: "0.0.0"
+  gbk_codec:
+    dependency: transitive
+    description:
+      name: gbk_codec
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.0"
   hex:
     dependency: transitive
     description:
@@ -129,7 +138,7 @@ packages:
       name: image
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.1.3"
+    version: "3.3.0"
   matcher:
     dependency: transitive
     description:
@@ -164,14 +173,14 @@ packages:
       name: petitparser
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.1.0"
+    version: "5.1.0"
   protobuf:
     dependency: transitive
     description:
       name: protobuf
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0"
+    version: "2.1.0"
   qr:
     dependency: transitive
     description:
@@ -192,7 +201,7 @@ packages:
       name: rxdart
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.27.3"
+    version: "0.27.7"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -260,7 +269,7 @@ packages:
       name: xml
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.1.1"
+    version: "6.1.0"
 sdks:
-  dart: ">=2.17.0-0 <3.0.0"
+  dart: ">=2.18.0 <3.0.0"
   flutter: ">=2.5.0"

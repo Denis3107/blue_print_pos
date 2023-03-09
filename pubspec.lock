@@ -70,16 +70,7 @@ packages:
       name: csslib
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.17.0"
-  esc_pos_utils:
-    dependency: "direct main"
-    description:
-      path: "."
-      ref: "0.0.1"
-      resolved-ref: "7b5165b4a02020539e56ef3cf859122381277134"
-      url: "https://github.com/Denis3107/esc_pos_utils"
-    source: git
-    version: "1.1.0"
+    version: "0.17.2"
   fake_async:
     dependency: transitive
     description:
@@ -106,6 +97,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.4.0"
+  flutter_esc_pos_utils:
+    dependency: "direct main"
+    description:
+      name: flutter_esc_pos_utils
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.8"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -131,7 +129,7 @@ packages:
       name: html
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.15.0"
+    version: "0.15.2"
   image:
     dependency: "direct main"
     description:
